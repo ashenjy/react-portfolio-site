@@ -59,10 +59,22 @@ Camunda 7 BPM Run, OpenAPI REST External Camunda BPM Client (Spring boot app), C
 - Buttons:
   - source-code [https://github.com/ashenjy/camunda-bpm-run]
 
-## Window Functions – PostgreSQL
-..
-- Tags: Big Data
+## Camunda 8 Process With Custom React UI
+Low-code Solution Template for Camunda Platform 8 using React, Java and Spring Boot
+- Tags: Software Development
 - Badges:
-  - PostgreSQL [red]
+  - JAVA [red]
+  - CAMUNDA BPM [red]
+  - REACTJS [red]
 - Buttons:
-  - source-code [https://shanejay.com/window-functions-postgresql/]
+  - source-code [https://github.com/ashenjy/camunda-8-lowcode-ui-template]
+
+## Securing a Microservice With Keycloak
+The sample microservice is created using JAX-RS and deployed to wildfly11.
+- Tags: Software Development
+- Badges:
+  - JAVA [red]
+  - KEYCLOAK [red]
+  - MICROSERVICE SECURITY [red]
+- Buttons:
+  - source-code [https://shanejay.com/securing-microservice-with-keycloak/]
