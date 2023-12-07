@@ -17,7 +17,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { Fade } from "react-reveal";
-import { useState, useEffect  } from "react";
+import { useState } from "react";
 import ProjectsArray from "./ProjectsArray";
 import OtherProjectsArray from "./OtherProjectsArray";
 import TagsArray from "./TagsArray";
@@ -29,13 +29,13 @@ export default function Projects({ color }) {
 
   // const [selected, setSelected] = useState("All");
 
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Software Development");
 
-  useEffect(() => {
-    if (options.length > 0) {
-      setSelected(options[0].value);
-    }
-  }, [options]);
+  // useEffect(() => {
+  //   if (options.length > 0) {
+  //     setSelected(options[0].value);
+  //   }
+  // }, [options]);
 
   const handleSelected = (value) => {
     setSelected(value);
