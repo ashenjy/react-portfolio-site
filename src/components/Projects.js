@@ -17,22 +17,30 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { Fade } from "react-reveal";
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import ProjectsArray from "./ProjectsArray";
 import OtherProjectsArray from "./OtherProjectsArray";
 import TagsArray from "./TagsArray";
 
 export default function Projects({ color }) {
-    const projects = ProjectsArray();
-    const others = OtherProjectsArray();
-    const options = TagsArray("ProjectsTags");
-    
-    const [selected, setSelected] = useState("All");
+  const projects = ProjectsArray();
+  const others = OtherProjectsArray();
+  const options = TagsArray("ProjectsTags");
 
-    const handleSelected = (value) => {
-      setSelected(value);
-    };
-    
+  // const [selected, setSelected] = useState("All");
+
+  const [selected, setSelected] = useState("");
+
+  useEffect(() => {
+    if (options.length > 0) {
+      setSelected(options[0].value);
+    }
+  }, [options]);
+
+  const handleSelected = (value) => {
+    setSelected(value);
+  };
+
   return (
     <>
       <Container maxW={"3xl"} id="projects">
@@ -94,9 +102,18 @@ export default function Projects({ color }) {
               </Fade>
             ))}
           </Stack>
-          <Text color={"gray.600"} fontSize={"xl"} px={4}>
+          {/* <Text color={"gray.600"} fontSize={"xl"} px={4}>
             Other Projects
-          </Text>
+          </Text> */}
+          <Stack align="center" direction="row" p={0}>
+            <HStack mx={10}>
+              <Text color={`${color}.400`} fontWeight={800}>
+                04
+              </Text>
+              <Text fontWeight={800} whiteSpace="nowrap">Other Projects</Text>
+            </HStack>
+            <Divider orientation="horizontal"/>
+          </Stack>
           <Center px={4}>
             <ButtonGroup variant="outline">
               <Button

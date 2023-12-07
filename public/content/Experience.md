@@ -1,6 +1,6 @@
 ## ASSOCIATE TECH LEAD
 - *DMS (Optus AU Outsourcing)*  | Aug 2020 - Dec 2021
-- ![logo512](../assets/dms-logo.png)
+- ![logo512](../assets/dms-logo-trans.png)
 - Tags: Data Engineering, Enterprise Software Development
 - Badges:
   - Badge [blue]
@@ -15,7 +15,7 @@
 
 ## DATA ENGINEER 
 - *DMS (Optus AU Outsourcing) 5G TELCO*  | Aug 2018 - Dec 2020
-- ![logo512](../assets/dms-logo.png)
+- ![logo512](../assets/dms-logo-trans.png)
 - Tags: Data Engineering, Enterprise Software Development
 - Badges:
   - Badge [blue]
@@ -28,7 +28,7 @@
 
 ## SOFTWARE ENGINEER
 - *DMS (Optus AU Outsourcing)*  | Aug 2017 - Dec 2020
-- ![logo512](../assets/dms-logo.png)
+- ![logo512](../assets/dms-logo-trans.png)
 - Tags: Data Engineering, Enterprise Software Development
 - Badges:
   - Badge [blue]
