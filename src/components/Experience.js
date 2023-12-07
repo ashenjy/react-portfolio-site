@@ -59,7 +59,7 @@ export default function Experience({ color }) {
             <Divider orientation="horizontal" />
           </Stack>
           <Center px={4}>
-            <ButtonGroup variant="outline">
+            <ButtonGroup flexWrap="wrap" gap={2} variant="outline">
               {options.map((option) => (
                 <Button
                   colorScheme={selected === option.value ? `${color}` : "gray"}
@@ -82,7 +82,7 @@ export default function Experience({ color }) {
                           <Image src={exp.image} h={50} />
                           <Box px={2} align="left">
                             <Text fontWeight={600}>{exp.company}</Text>
-                            <Text>{exp.position}</Text>
+                            <Text fontSize="sm">{exp.position}</Text>
                           </Box>
                         </HStack>
                         <Text px={2} fontWeight={300}>
@@ -92,9 +92,9 @@ export default function Experience({ color }) {
                     </CardHeader>
                     <CardBody>
                       <Flex>
-                        <List align="left" spacing={3}>
+                        <List align="left" spacing={0}>
                           {exp.listItems.map((item, index) => (
-                            <ListItem key={index}>
+                            <ListItem key={index} fontSize="sm">
                               <ListIcon
                                 boxSize={6}
                                 as={ChevronRightIcon}

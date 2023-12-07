@@ -115,7 +115,7 @@ export default function Projects({ color }) {
             <Divider orientation="horizontal"/>
           </Stack>
           <Center px={4}>
-            <ButtonGroup variant="outline">
+            <ButtonGroup flexWrap="wrap" gap={2} variant="outline">
               <Button
                 colorScheme={selected === "All" ? `${color}` : "gray"}
                 onClick={() => handleSelected("All")}
