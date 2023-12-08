@@ -16,6 +16,18 @@ import {
   Link,
   Center,
 } from "@chakra-ui/react";
+
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure
+} from '@chakra-ui/react'
+
 import { Fade } from "react-reveal";
 import { useState } from "react";
 import ProjectsArray from "./ProjectsArray";
@@ -26,6 +38,14 @@ export default function Projects({ color }) {
   const projects = ProjectsArray();
   const others = OtherProjectsArray();
   const options = TagsArray("ProjectsTags");
+
+  const [selectedOther, setSelectedOther] = useState("");
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const openModal = (other) => {
+    setSelectedOther(other);
+    onOpen();
+  };
 
   // const [selected, setSelected] = useState("All");
 
@@ -112,7 +132,7 @@ export default function Projects({ color }) {
               </Text>
               <Text fontWeight={800} whiteSpace="nowrap">Other Projects</Text>
             </HStack>
-            <Divider orientation="horizontal"/>
+            <Divider orientation="horizontal" />
           </Stack>
           <Center px={4}>
             <ButtonGroup flexWrap="wrap" gap={2} variant="outline">
@@ -146,11 +166,11 @@ export default function Projects({ color }) {
                   <Card key={other.name}>
                     <Stack>
                       <CardBody align="left" h={[null, "40vh"]}>
-                        <Heading size="sm">{other.name}</Heading>
-
-                        <Text fontSize="sm" py={2}>
-                          {other.description}
-                        </Text>
+                        <Heading
+                          onClick={() => openModal(other)}
+                          size="sm">
+                          {other.name}
+                        </Heading>
 
                         <HStack spacing={2}>
                           {other.buttons.map((button) => (
@@ -166,7 +186,6 @@ export default function Projects({ color }) {
                         <HStack flexWrap="wrap" pt={4} spacing={2}>
                           {other.badges.map((badge) => (
                             <Badge
-                              my={2}
                               key={badge.text}
                               colorScheme={badge.colorScheme}
                             >
@@ -179,6 +198,27 @@ export default function Projects({ color }) {
                   </Card>
                 </Fade>
               ))}
+
+            <Modal size="lg" isOpen={isOpen} onClose={onClose}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>{selectedOther.name}</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  <Text fontSize="sm" py={2}>
+                  {selectedOther.description}
+                  </Text>
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button mr={3} onClick={onClose}>
+                    Close
+                  </Button>
+                  {/* <Button variant='ghost'>Secondary Action</Button> */}
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+
           </SimpleGrid>
         </Stack>
       </Container>

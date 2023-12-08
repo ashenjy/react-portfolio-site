@@ -20,6 +20,17 @@ import {
   SimpleGrid
 } from "@chakra-ui/react";
 
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure
+} from '@chakra-ui/react'
+
 export default function Services({ color }) {
   const servicesData = [
     {
@@ -54,43 +65,72 @@ export default function Services({ color }) {
     },
   ];
 
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
     <>
-      <Box maxW="6xl" mx="auto" py={12} id="services">
-        <Heading mb={10} textAlign="center">
-          Services Offered
-        </Heading>
-        <Stack spacing={10}>
-        <SimpleGrid columns={[1, 2, 3]} px={4} spacing={4}>
-            {servicesData.map((service) => (
-              <Card key={service.title}>
-                <CardHeader>
-                  <Heading >{service.title}</Heading>
-                </CardHeader>
-                <CardBody align="left">
-                  <Text pb="15px">
-                    {service.description}
-                  </Text>
-                  <HStack flexWrap="wrap" spacing={2} >
-                    {service.technologies.map((technology) => (
-                      <Badge
-                        key={technology}
-                        colorScheme="red"
-                      >
-                        {technology}
-                      </Badge>
-                    ))}
-                  </HStack>
-                </CardBody>
-                <Flex justifyContent={"flex-end"} gap="45px">
-                  {/* <Button border="1px solid" color="#007BFF" bg="#FFF" ml="20px" mb="10px">No, do not grant</Button> */}
-                  <Button bg="#007BFF" color="#FFF" mb="10px" mr="5px">Book A Call</Button>
-                </Flex>
-              </Card>
-            ))}
-          </SimpleGrid>
-        </Stack>
-      </Box>
+      <Container maxW={"6xl"} id="services">
+        <Box maxW="6xl" mx="auto" py={12} >
+          <HStack mx={4} mb={10}>
+            <Text color={`${color}.400`} fontWeight={800}>
+              03
+            </Text>
+            <Text fontWeight={800}>Services Offered</Text>
+          </HStack>
+          <Divider orientation="horizontal" mx={4} mb={10} />
+          <Stack spacing={10}>
+            <SimpleGrid columns={[1, 2, 3]} px={4} spacing={4}>
+              {servicesData.map((service) => (
+                <Card key={service.title}>
+                  <CardHeader>
+                    <Text fontSize="xl" fontWeight={600}>{service.title}</Text>
+                  </CardHeader>
+                  <CardBody align="left" mt={-2}>
+                    <Text pb="15px">
+                      {service.description}
+                    </Text>
+                    <HStack flexWrap="wrap" spacing={2} mb={2} >
+                      {service.technologies.map((technology) => (
+                        <Badge
+                          key={technology}
+                          colorScheme="red"
+                        >
+                          {technology}
+                        </Badge>
+                      ))}
+                    </HStack>
+                  </CardBody>
+                  <Flex justifyContent={"flex-end"} gap="45px">
+                    <Button mb="10px" mr="5px" onClick={onOpen}>Book A Call</Button>
+                    <Modal size="lg" isOpen={isOpen} onClose={onClose}>
+                      <ModalOverlay />
+                      <ModalContent>
+                        <ModalHeader>Calendly</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                          <Text mb={2}>Please wait a second for calendly to load the schedule page.</Text>
+                          <iframe
+                            src="https://calendly.com/jayasinghe-ashen/30min?back=1&month=2023-12"
+                            width="100%"
+                            height="500px"
+                            frameBorder="0"
+                          ></iframe>
+                        </ModalBody>
+
+                        <ModalFooter>
+                          <Button mr={3} onClick={onClose}>
+                            Close
+                          </Button>
+                          {/* <Button variant='ghost'>Secondary Action</Button> */}
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  </Flex>
+                </Card>
+              ))}
+            </SimpleGrid>
+          </Stack>
+        </Box></Container>
     </>
   );
 }
