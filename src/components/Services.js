@@ -4,10 +4,7 @@ import {
   Text,
   Card,
   CardBody,
-  Heading,
   Divider,
-  List,
-  ListItem,
   Icon,
   HStack,
   Flex,
@@ -15,11 +12,8 @@ import {
   CardHeader,
   Button,
   Badge,
-  Center,
-  Grid,
   SimpleGrid
 } from "@chakra-ui/react";
-
 import {
   Modal,
   ModalOverlay,
@@ -30,8 +24,12 @@ import {
   ModalCloseButton,
   useDisclosure
 } from '@chakra-ui/react'
+import ConfigsArray from "./ConfigsArray";
+import ConfigKeys from "../ConfigKeys";
+
 
 export default function Services({ color }) {
+
   const servicesData = [
     {
       title: "Web Development",
@@ -66,6 +64,22 @@ export default function Services({ color }) {
   ];
 
   const { isOpen, onOpen, onClose } = useDisclosure()
+
+  const configs = ConfigsArray();
+
+  const getCalendlyUrl = (configs) => {
+    // Iterate through the array and find the calendlyUrl
+    for (const config of configs) {
+      if (ConfigKeys.CALENDLY_URL in config) {
+        return config.calendlyUrl;
+      }
+    }
+  
+    // Return a default value or handle the case where calendlyUrl is not found
+    return null;
+  };
+  
+  const calendlyUrl = getCalendlyUrl(configs);
 
   return (
     <>
@@ -110,7 +124,8 @@ export default function Services({ color }) {
                         <ModalBody>
                           <Text mb={2}>Please wait a second for calendly to load the schedule page.</Text>
                           <iframe
-                            src="https://calendly.com/jayasinghe-ashen/30min?back=1&month=2023-12"
+                            src={calendlyUrl}
+                            title="Calendly Event"
                             width="100%"
                             height="500px"
                             frameBorder="0"
