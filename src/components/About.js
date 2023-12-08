@@ -30,7 +30,7 @@ export default function About({ color }) {
             </HStack>
             <Divider orientation="horizontal" />
           </Stack>
-          <Text color={"gray.500"} fontSize={"xl"} px={4} fontWeight="semibold">
+          <Text color={"gray.500"} fontSize={"md"} px={4}>
             {profile.about}
           </Text>
         </Stack>
