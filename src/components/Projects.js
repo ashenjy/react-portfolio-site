@@ -168,7 +168,8 @@ export default function Projects({ color }) {
                       <CardBody align="left" h={[null, "40vh"]}>
                         <Heading
                           onClick={() => openModal(other)}
-                          size="sm">
+                          size="sm"
+                          cursor="pointer" _hover={{ textDecoration: "underline" }}>
                           {other.name}
                         </Heading>
 
