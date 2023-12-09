@@ -166,10 +166,11 @@ export default function Projects({ color }) {
                   <Card key={other.name}>
                     <Stack>
                       <CardBody align="left" h={[null, "40vh"]}>
-                        <Heading
+                        <Heading fontWeight={500}
                           onClick={() => openModal(other)}
                           size="sm"
-                          cursor="pointer" _hover={{ textDecoration: "underline" }}>
+                          cursor="pointer" _hover={{ textDecoration: "underline" }}
+                          pb={3}>
                           {other.name}
                         </Heading>
 
